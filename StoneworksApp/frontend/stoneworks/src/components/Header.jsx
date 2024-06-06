@@ -1,9 +1,17 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import UserContext from '../UserContext';
+import { Link, useNavigate } from 'react-router-dom';
+import UserContext from '../context/UserContext';
 
 function Header() {
-  const user = useContext(UserContext);
+  const { user, setUser } = useContext(UserContext);
+  const navigate = useNavigate();
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    // Wylogowanie użytkownika
+    setUser(null);
+    navigate('/login');
+  };
 
   return (
     <div className="menu-container">
@@ -12,7 +20,7 @@ function Header() {
         <Link to="/offers">Oferty</Link>
         <Link to="/contact">Kontakt</Link>
         {user ? (
-          <Link to="/logout">Wyloguj</Link>
+          <Link to="/login" onClick={handleLogout}>Wyloguj</Link>
         ) : (
           <Link to="/login">Logowanie</Link>
         )}
@@ -22,3 +30,4 @@ function Header() {
 }
 
 export default Header;
+  

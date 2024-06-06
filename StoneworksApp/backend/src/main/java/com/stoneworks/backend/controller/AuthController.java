@@ -15,8 +15,8 @@ public class AuthController {
     private UserService userService;
 
     @PostMapping("/login")
-    public ResponseEntity<String> login(@RequestParam String email, @RequestParam String password) {
-        String response = userService.login(email, password);
+    public ResponseEntity<String> login(@RequestBody User user) {
+        String response = userService.login(user.getEmail(), user.getPassword());
         if ("Zalogowano pomyślnie".equals(response)) {
             return new ResponseEntity<>(response, HttpStatus.OK);
         } else {
