@@ -1,6 +1,7 @@
 package com.stoneworks.backend.entity;
 
 import jakarta.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -23,6 +24,9 @@ public class User {
 
     @Column(nullable = false)
     private String type;
+
+    @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL, orphanRemoval = true)
+    private Set<Contact> contacts;
 
     // Constructors
     public User() {
@@ -84,5 +88,13 @@ public class User {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public Set<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(Set<Contact> contacts) {
+        this.contacts = contacts;
     }
 }
