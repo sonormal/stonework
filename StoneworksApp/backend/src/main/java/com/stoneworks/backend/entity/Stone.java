@@ -1,34 +1,21 @@
 package com.stoneworks.backend.entity;
 
-import jakarta.persistence.*;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 
 @Entity
-@Table(name = "stones")
 public class Stone {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
     private String type;
     private String color;
     private double price;
     private String path; // ścieżka do obrazka
 
-    // Constructors
-    public Stone() {
-    }
-
-    public Stone(Long id, String name, String type, String color, double price, String path) {
-        this.id = id;
-        this.name = name;
-        this.type = type;
-        this.color = color;
-        this.price = price;
-        this.path = path;
-    }
-
-    // Getters and setters
     public Long getId() {
         return id;
     }

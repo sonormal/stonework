@@ -12,10 +12,6 @@ public class Contact {
     @Column(nullable = false)
     private Long userId;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "userId", insertable = false, updatable = false)
-    private User user;
-
     @Column(nullable = false)
     private String email;
 
@@ -33,19 +29,12 @@ public class Contact {
 
     private String stoneName;
 
-    @Column(nullable = true)
-    private Long stoneId;
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "stoneId", insertable = false, updatable = false)
-    private Stone stone;
-
     // Constructors
     public Contact() {
     }
 
     public Contact(Long id, Long userId, String email, String name, String surname, String phone, String message,
-            String stoneName, Long stoneId) {
+            String stoneName) {
         this.id = id;
         this.userId = userId;
         this.email = email;
@@ -54,7 +43,6 @@ public class Contact {
         this.phone = phone;
         this.message = message;
         this.stoneName = stoneName;
-        this.stoneId = stoneId;
     }
 
     // Getters and setters
@@ -120,29 +108,5 @@ public class Contact {
 
     public void setStoneName(String stoneName) {
         this.stoneName = stoneName;
-    }
-
-    public Long getStoneId() {
-        return stoneId;
-    }
-
-    public void setStoneId(Long stoneId) {
-        this.stoneId = stoneId;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public Stone getStone() {
-        return stone;
-    }
-
-    public void setStone(Stone stone) {
-        this.stone = stone;
     }
 }
