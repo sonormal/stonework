@@ -14,9 +14,9 @@ const Offers = () => {
         setFilters(prevFilters => {
             const newFilters = { ...prevFilters };
             if (checked) {
-                newFilters[name] = value;  // Dodaj/zaktualizuj filtr
+                newFilters[name] = value; 
             } else {
-                delete newFilters[name];  // Usuń filtr, jeśli checkbox jest odznaczony
+                delete newFilters[name];  
             }
             return newFilters;
         });
@@ -61,7 +61,6 @@ const Offers = () => {
             <div className="stones-container">
                 {stones.map(stone => (
                     <div
-                        key={stone.id} 
                         className="stone" 
                         style={{ 
                             backgroundImage: `url(${stone.path})`,
@@ -72,8 +71,6 @@ const Offers = () => {
                     >
                         <img src={stone.path} alt={stone.name} onError={() => console.log('Error loading image:', stone.path)} style={{ display: 'none' }}/>
                         <p className="name">{stone.name}</p>
-                        <p className="type">{stone.type}</p>
-                        <p className="color">{stone.color}</p>
                         <p className="price">{stone.price} PLN</p>
                     </div>
                 ))}

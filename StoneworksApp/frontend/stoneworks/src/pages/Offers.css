@@ -210,19 +210,20 @@ input[type="checkbox"] {
     width: 360px; /* Szerokość każdego diva */
     height: 422px; /* Wysokość każdego diva */
     border: 1px solid #ccc; /* Grubość i styl obramowania */
-    margin: 5px; /* Margines wokół diva */
+    margin: 10px; /* Margines wokół diva */
+    margin-left: 25px;
     float: left; /* Ustawienie na lewo, aby były obok siebie */
     box-sizing: border-box; /* Włącz box-sizing, aby marginesy i padding nie zwiększały szerokości */
     margin-top: 50px;
     
 }
-.stone:nth-child(-n+5) {
+.stone:nth-child(-n+4) {
     margin-top: 400px;
 }
 /* Ustawienie czyszczenia floatów co pięć elementów */
-.stone:nth-child(5n+1) {
+.stone:nth-child(4n+1) {
     clear: left;
-    margin-left: 30px;
+    margin-left: 120px;
 }
 
 .stone:hover {

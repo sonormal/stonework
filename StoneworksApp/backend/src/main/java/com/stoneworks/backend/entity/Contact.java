@@ -1,7 +1,7 @@
 package com.stoneworks.backend.entity;
 
 import jakarta.persistence.*;
-
+// relacje nastepny pytanie
 @Entity
 @Table(name = "contacts")
 public class Contact {

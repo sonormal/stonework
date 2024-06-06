@@ -19,12 +19,6 @@ public class ProjectController {
         this.stoneRepository = stoneRepository;
     }
 
-    @PostMapping("/addStone")
-    public ResponseEntity<Void> addStone(@RequestBody Stone stone) {
-        stoneRepository.save(stone);
-        return ResponseEntity.ok().build();
-    }
-
     @PostMapping(value = "/search", consumes = "application/json", produces = "application/json")
     public ResponseEntity<List<Stone>> search(@RequestBody Stone searchParams) {
         List<Stone> stones = stoneRepository.getStonesByFilters(searchParams.getType(), searchParams.getColor());
