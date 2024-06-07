@@ -1,0 +1,84 @@
+.admin-container {
+    padding: 20px;
+}
+
+.menu-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+}
+
+.logo {
+    height: 50px;
+}
+
+.menu-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #333;
+}
+
+.menu-links a:hover {
+    text-decoration: underline;
+}
+
+.admin-content {
+    margin-top: 20px;
+}
+
+.admin-content h1 {
+    font-size: 24px;
+}
+
+.admin-content p {
+    font-size: 16px;
+}
+
+.form-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.admin-right {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    margin-right: 20px;
+    flex: 1;
+}
+
+.admin-right h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.admin-right form {
+    display: flex;
+    flex-direction: column;
+}
+
+.admin-right input[type="text"],
+.admin-right input[type="number"],
+.admin-right input[type="password"],
+.admin-right select {
+    margin-bottom: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+}
+
+.admin-right button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 3px;
+}
+
+.admin-right button:hover {
+    background-color: #0056b3;
+}

@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import UserContext from '../context/UserContext';
 
@@ -6,9 +6,28 @@ function Header() {
   const { user, setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if (token) {
+      // Optionally validate the token with an API call here
+      // Example:
+      // axios.post('http://localhost:8080/api/auth/validate', { token })
+      //   .then(response => {
+      //     if (response.data.valid) {
+      //       // Set user state based on token or API response
+      //       setUser({ email: response.data.email, type: response.data.userType });
+      //     } else {
+      //       localStorage.removeItem('token');
+      //     }
+      //   });
+      const userType = token.includes('admin') ? 'admin' : 'user';
+      setUser({ email: 'user@example.com', type: userType }); // Update with actual user info
+    }
+  }, [setUser]);
+
   const handleLogout = (e) => {
     e.preventDefault();
-    // Wylogowanie użytkownika
+    localStorage.removeItem('token');
     setUser(null);
     navigate('/login');
   };
@@ -30,4 +49,3 @@ function Header() {
 }
 
 export default Header;
-  
