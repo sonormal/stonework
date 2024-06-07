@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import com.stoneworks.backend.entity.Stone;
 import com.stoneworks.backend.repository.StoneRepository;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -18,8 +19,8 @@ public class StoneController {
 
     @GetMapping
     public List<Stone> getAllStones(@RequestParam(required = false) String rodzaj,
-            @RequestParam(required = false) String kolor,
-            @RequestParam(required = false) String cena) {
+                                    @RequestParam(required = false) String kolor,
+                                    @RequestParam(required = false) String cena) {
         if (rodzaj != null || kolor != null || cena != null) {
             return stoneRepository.findByTypeAndColorAndSort(rodzaj, kolor, cena);
         }
@@ -34,8 +35,13 @@ public class StoneController {
     }
 
     @PostMapping
-    public Stone createStone(@RequestBody Stone stone) {
-        return stoneRepository.save(stone);
+    public ResponseEntity<Stone> createStone(@RequestBody Stone stone) {
+        try {
+            Stone savedStone = stoneRepository.save(stone);
+            return new ResponseEntity<>(savedStone, HttpStatus.CREATED);
+        } catch (Exception e) {
+            return new ResponseEntity<>(null, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @PutMapping("/{id}")

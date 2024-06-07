@@ -16,6 +16,7 @@ public class Stone {
     private double price;
     private String path; // ścieżka do obrazka
 
+    // Gettery i settery
     public Long getId() {
         return id;
     }
