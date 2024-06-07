@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import UserContext from '../context/UserContext';
 import axios from 'axios';
-import './Admin.css'; // Upewnij się, że masz odpowiednie style CSS
+import './Admin.css';
 
 function Admin() {
   const { user, setUser } = useContext(UserContext);
@@ -34,9 +34,9 @@ function Admin() {
 
   const handleLogout = (e) => {
     e.preventDefault();
-    localStorage.removeItem('token'); // Remove the token from localStorage
-    setUser(null); // Clear the user context
-    navigate('/login'); // Redirect to login page
+    localStorage.removeItem('token');
+    setUser(null);
+    navigate('/login');
   };
 
   const handleAddStone = async (e) => {
@@ -106,7 +106,6 @@ function Admin() {
                 value={stoneType}
                 onChange={(e) => setStoneType(e.target.value)}
                 required
-                defaultValue=""
               >
                 <option value="" disabled>Wybierz typ kamienia</option>
                 <option value="granit">Granit</option>
@@ -119,7 +118,6 @@ function Admin() {
                 value={stoneColor}
                 onChange={(e) => setStoneColor(e.target.value)}
                 required
-                defaultValue=""
               >
                 <option value="" disabled>Wybierz kolor kamienia</option>
                 <option value="biały">Biały</option>
@@ -150,7 +148,7 @@ function Admin() {
           </div>
           <div className="admin-right">
             <h2>Usuń kamień</h2>
-            <select onChange={(e) => handleDeleteStone(e.target.value)} defaultValue="">
+            <select onChange={(e) => handleDeleteStone(e.target.value)} value="">
               <option value="" disabled>Wybierz kamień do usunięcia</option>
               {stones.map((stone) => (
                 <option key={stone.id} value={stone.id}>

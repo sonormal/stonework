@@ -1,27 +1,5 @@
-.admin-container {
-    padding: 20px;
-}
-
-.menu-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #f8f8f8;
-}
-
 .logo {
     height: 50px;
-}
-
-.menu-links a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #333;
-}
-
-.menu-links a:hover {
-    text-decoration: underline;
 }
 
 .admin-content {
@@ -79,6 +57,3 @@
     border-radius: 3px;
 }
 
-.admin-right button:hover {
-    background-color: #0056b3;
-}
