@@ -23,23 +23,27 @@ const Login = () => {
         try {
             const response = await axios.post('http://localhost:8080/api/auth/login', { email, password });
             if (response.status === 200) {
-                setMessages([response.data]);
-                setUser({ email }); // Ustawienie użytkownika w kontekście
-                navigate('/main'); // Przekierowanie po zalogowaniu
+                const token = response.data.token;
+                const userType = response.data.userType;
+                localStorage.setItem('token', token); // Store the token in localStorage
+                setUser({ email, type: userType });
+                console.log(`Logged in as ${userType}`);
+                if (userType === 'admin') {
+                    navigate('/admin');
+                } else {
+                    navigate('/main');
+                }
             }
         } catch (error) {
             if (error.response) {
-                // Serwer odpowiedział, ale z kodem błędu
                 if (error.response.status === 401) {
                     setMessages(['Email lub hasło zostały źle wprowadzone']);
                 } else {
                     setMessages(['Wystąpił błąd podczas logowania: ' + error.response.data]);
                 }
             } else if (error.request) {
-                // Żądanie zostało wysłane, ale nie otrzymano odpowiedzi
                 setMessages(['Brak odpowiedzi z serwera']);
             } else {
-                // Coś poszło nie tak podczas konfigurowania żądania
                 setMessages(['Wystąpił błąd podczas logowania']);
             }
         }
