@@ -39,12 +39,8 @@ const Offers = () => {
     useEffect(() => {
         const fetchStones = async () => {
             try {
-                const token = localStorage.getItem('token');
                 const response = await axios.get('http://localhost:8080/api/stones', {
                     params: filters,
-                    headers: {
-                        'Authorization': `Bearer ${token}`
-                    },
                     withCredentials: true
                 });
                 setStones(response.data);
